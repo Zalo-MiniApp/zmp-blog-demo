@@ -1,0 +1,92 @@
+.categories {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* For Firefox */
+  -ms-overflow-style: none;
+  /* For Internet Explorer and Edge */
+  scroll-behavior: smooth;
+}
+.category {
+  display: inline-block;
+  background-image: url("/src/static/images/onboarding-2.png");
+  background-color:#f4f7ff;
+  height: 60vw;
+  width: 60vw;
+  max-height: 256px;
+  max-width: 256px;
+  border-radius: 28px;
+  position: relative;
+  background-size: cover;
+  -webkit-transition: background-image 0.2s;
+
+  transition: all 0.2s linear;
+}
+.categories{
+  padding-bottom: 16px;
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide{
+    width: fit-content;
+    height: auto;
+    width: auto;
+    height: auto;
+  }
+  .category::after {
+    content: "";
+    background: linear-gradient(180deg, rgba(13, 37, 60, 0) 51.56%, #0d253c 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 28px;
+    z-index: 1;
+  }
+  .category-name {
+    width: calc(100% - 48px);
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    left: 24px;
+    bottom: 32px;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    color: #ffffff;
+    z-index: 2;
+  }
+  .swiper-slide:not(:first-child) {
+    margin-left: 20px;
+  }
+  .swiper-slide:first-child {
+    margin-left: 40px;
+  }
+  .swiper-slide:last-child {
+    margin-right: 40px;
+  }
+  
+  .category{
+    .category-shadow{
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      top: 0;
+      left: 10%;
+      z-index: -1;
+      background: #0D253C;
+    }
+  }
+}
+.categories::-webkit-scrollbar {
+  width: 0;
+  
+}

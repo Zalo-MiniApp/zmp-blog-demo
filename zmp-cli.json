@@ -1,0 +1,16 @@
+{
+  "cwd": "/path/to/blog-club",
+  "newProject": true,
+  "name": "Blog Club",
+  "framework": "react",
+  "template": "blank",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": true,
+    "color": "#376AED",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
