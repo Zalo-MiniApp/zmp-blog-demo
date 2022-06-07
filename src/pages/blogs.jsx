@@ -1,22 +1,28 @@
 import React, { useState, useRef, useEffect, useCallback } from "react"
-import BlogItem from "@components/BlogItem"
+import Post from "@components/Post"
 import {
   Title,
   Box,
   Page,
+  SkeletonText,
   List,
+  ListItem,
+  Navbar,
+  NavTitle,
   useStore,
+  zmp,
 } from "zmp-framework/react"
 import store from "../store"
+import Header from "@components/Header"
 
-const Blogs = ({ zmproute }) => {
+const ListPost = ({ zmproute }) => {
   const allowInfinite = useRef(true)
   const vlEl = useRef(null)
   const { data, skip = 0, limit = 10, hasMore } = useStore("latestBlogs")
   const [vlData, setVlData] = useState({
     items: data,
   })
-  const loading = useStore("showBlogsLoadingSkeleton")
+  const loading = useStore("loadingBlogs")
 
   let pageContent = null
 
@@ -56,7 +62,7 @@ const Blogs = ({ zmproute }) => {
       .dispatch("getLatestBlogs", {
         skip: 0,
         limit,
-        showSkeleton: false,
+        showSkeleton: true,
         reset: true,
       })
       .finally(() => {
@@ -66,10 +72,10 @@ const Blogs = ({ zmproute }) => {
 
   if (loading) {
     pageContent = (
-      <div className="blog-list">
-        <BlogItem loading />
-        <BlogItem loading />
-        <BlogItem loading />
+      <div className="posts">
+        <Post loading />
+        <Post loading />
+        <Post loading />
       </div>
     )
   } else {
@@ -77,7 +83,7 @@ const Blogs = ({ zmproute }) => {
       <List
         ref={vlEl}
         noHairlines
-        className="blog-list"
+        className="list-post"
         virtualList
         noHairlinesBetween
         virtualListParams={{
@@ -88,11 +94,12 @@ const Blogs = ({ zmproute }) => {
       >
         <ul>
           {vlData.items.map((item, index) => (
-            <BlogItem
+            <Post
               key={item.id}
               virtualListIndex={data.findIndex((it) => it.id === item.id)}
               style={{ top: `${vlData.topPosition}px` }}
               {...item}
+              title={`${item.id}, ${item.title}`}
               vlTopPosition={vlData.topPosition}
               vtitle={`${item.id}, ${item.title}`}
             />
@@ -100,27 +107,25 @@ const Blogs = ({ zmproute }) => {
         </ul>
       </List>
     )
-
   }
   return (
     <Page
       ptr
       onPtrRefresh={refreshPage}
+      onPageBeforeIn={() => {
+        zmp.toolbar.hide("#main-nav", false)
+      }}
       infinite
       infiniteDistance={50}
       infinitePreloader={!loading && hasMore}
       onInfinite={loadMore}
     >
-      <Box className="blog-list" p="10" m="0">
-        <Box m="0" flex flexDirection="row" justifyContent="space-between">
-          <Title size="normal" className="font-extrabold text-blue-dark">
-            Latest
-          </Title>
-        </Box>
+      <Header>Latest News</Header>
+      <Box className="list-post" px="10" pb="10" pt={0} m="0">
         {pageContent}
       </Box>
     </Page>
   )
 }
 
-export default Blogs
+export default ListPost

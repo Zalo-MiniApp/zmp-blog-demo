@@ -1,23 +1,29 @@
-# Blog Club
+# ZMP Blog
 
-## Pre-requisites
+## ZMP CLI Options
 
-1. [Install Node JS](https://nodejs.org/en/download/)
-1. [Install Mini App DevTools CLI](https://miniapp.zalo.me/docs/dev-tools)
-1. clone this repository
+ZMP app created with following options:
+
+```
+{
+  "cwd": "/Users/duongvu/zte/blog-club",
+  "newProject": true,
+  "name": "ZMP Blog",
+  "framework": "react",
+  "template": "blank",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": true,
+    "color": "#376AED",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
+```
+
 ## NPM Scripts
 
 * 🔥 `start` - run development server
 * 🙏 `deploy` - deploy mini app for production
-
-## Run 
-Move to project folder
-
-1. Install dependencies
-	```bash
-	npm install
-	```
-
-1. Start client using zmp-cli
-	```bash
-	zmp start

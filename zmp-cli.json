@@ -1,7 +1,7 @@
 {
-  "cwd": "/path/to/blog-club",
+  "cwd": "/Users/duongvu/zte/blog-club",
   "newProject": true,
-  "name": "Blog Club",
+  "name": "ZMP Blog",
   "framework": "react",
   "template": "blank",
   "cssPreProcessor": "scss",

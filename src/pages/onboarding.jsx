@@ -11,25 +11,25 @@ const data = [
     key: "0",
     title: "Read the article you want instantly",
     content:
-      "You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.",
+      "You can read thousands of articles on ZMP Blog, save them in the application and share them with your loved ones.",
   },
   {
     key: "1",
     title: "1 Read the article you want instantly",
     content:
-      "You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.",
+      "You can read thousands of articles on ZMP Blog, save them in the application and share them with your loved ones.",
   },
   {
     key: "2",
     title: "2 Read the article you want instantly",
     content:
-      "You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.",
+      "You can read thousands of articles on ZMP Blog, save them in the application and share them with your loved ones.",
   },
   {
     key: "3",
     title: "Read the article you want instantly",
     content:
-      "You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.",
+      "You can read thousands of articles on ZMP Blog, save them in the application and share them with your loved ones.",
   },
 ]
 const OnBoarding = () => {

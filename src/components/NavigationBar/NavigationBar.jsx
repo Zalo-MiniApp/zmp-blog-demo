@@ -1,42 +1,18 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import propTypes from "prop-types"
 import { Link, Tabbar, Text, zmp } from "zmp-framework/react"
-import {
-  ArticleIcon,
-  HomeIcon,
-  MenuIcon,
-  SearchIcon,
-  PlusIcon,
-} from "@components/Icons"
-import useCurrentRoute from "@hooks/useCurrentRoute"
-import './styles.scss'
+import { ArticleIcon, HomeIcon, MenuIcon, SearchIcon } from "@components/Icons"
 
-const NavigationBar = () => {
-  const currentPath = useCurrentRoute()
-
-  let activePath = currentPath
-  if (currentPath[currentPath.length - 1] !== "/") {
-    activePath = `${currentPath}/`
-  }
-  const tabHistory = useRef([activePath])
-
-  const switchTab = (tabLink) => {
-
-    zmp.views.current.router.navigate(tabLink, {
-      browserHistory: false,
-      animate: false,
-    })
-  }
-
+const NavigationBar = ({ activeTab }) => {
   return (
-    <Tabbar slot="fixed" bottom className="app-tabbar shadow-1" noHairline>
+    <Tabbar id="main-nav" bottom className="app-tabbar shadow-1" xư>
       <Link
         noLinkClass
-        onClick={() => switchTab("/")}
         className="flex flex-col items-center	"
-        tabLinkActive={activePath === "/"}
+        tabLink="#view-main"
+        tabLinkActive
       >
-        <HomeIcon active={activePath === "/"} />
+        <HomeIcon active={activeTab === "main"} />
         <Text
           size="xxxsmall"
           className="navbar-item-label navbar-item-label text-gray-dark font-extrabold"
@@ -46,11 +22,10 @@ const NavigationBar = () => {
       </Link>
       <Link
         noLinkClass
-        onClick={() => switchTab("/article/")}
         className="flex flex-col items-center	"
-        tabLinkActive={activePath === "/article/"}
+        tabLink="#view-article"
       >
-        <ArticleIcon active={activePath === "/article/"} />
+        <ArticleIcon active={activeTab === "article"} />
         <Text
           size="xxxsmall"
           className="navbar-item-label text-gray-dark font-extrabold"
@@ -58,21 +33,12 @@ const NavigationBar = () => {
           Article
         </Text>
       </Link>
-      <div>
-        <Link
-          noLinkClass
-          className="write-blog rounded-full border-white bg-blue border-4 items-center	"
-        >
-          <PlusIcon />
-        </Link>
-      </div>
       <Link
         noLinkClass
-        onClick={() => switchTab("/search/")}
         className="flex flex-col items-center	"
-        tabLinkActive={activePath === "/search/"}
+        tabLink="#view-search"
       >
-        <SearchIcon active={activePath === "/search/"} />
+        <SearchIcon active={activeTab === "search"} />
         <Text
           size="xxxsmall"
           className="navbar-item-label text-gray-dark font-extrabold"
@@ -80,13 +46,8 @@ const NavigationBar = () => {
           Search
         </Text>
       </Link>
-      <Link
-        noLinkClass
-        className="flex flex-col items-center	"
-        tabLinkActive={activePath === "/menu/"}
-        onClick={() => switchTab("/menu/")}
-      >
-        <MenuIcon active={activePath === "/menu/"} />
+      <Link noLinkClass className="flex flex-col items-center	" tabLink="#view-menu">
+        <MenuIcon active={activeTab === "menu"} />
         <Text
           size="xxxsmall"
           className="navbar-item-label text-gray-dark font-extrabold"

@@ -4,6 +4,7 @@
   --zmp-theme-color-rgb: 55, 106, 237;
   --zmp-theme-color-shade: #1550e6;
   --zmp-theme-color-tint: #5c86f0;
+  --zmp-navbar-height: 44px;
 }
 
 @font-face {
@@ -29,7 +30,7 @@ body * {
   font-family: "Avenir";
 }
 
-.home-page{
+.home-page {
   padding-bottom: 80px;
 }
 /* Your app custom styles here */
@@ -92,7 +93,7 @@ body * {
 .link {
   font-size: 14px;
   line-height: 19px;
-  color: #376AED;
+  color: #376aed;
   font-weight: 500;
 }
 
@@ -170,4 +171,314 @@ body * {
     height: 23px;
   }
 }
+.avatar-wrapper {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stories {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+.story {
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+  &:first-child {
+    margin-left: 40px;
+  }
+  .story-name {
+    margin-top: 6px;
+  }
+}
+.avatar {
+  width: 54px;
+  height: 54px;
+  z-index: 2;
+  .avatar-image {
+    border-radius: 18px;
+  }
+}
+.avatar-border {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border-radius: 24px;
 
+  &.avatar-seen {
+    border: 2px dashed #7b8bb2;
+  }
+  &.avatar-not-seen {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border: double 2px transparent;
+    background-image: linear-gradient(white, white),
+      linear-gradient(180deg, #376aed, #49b0e2, #9cecfb);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
+}
+.app-tabbar {
+  width: 100%;
+  height: 82px;
+  border: none;
+  .tab-link-highlight {
+    display: none;
+  }
+}
+
+.toolbar.tabbar .toolbar-inner .link,
+.toolbar.tabbar .toolbar-inner .tab-link {
+  position: relative;
+  overflow: visible;
+}
+.toolbar.tabbar .toolbar-inner {
+  overflow: visible;
+  height: 100%;
+}
+.write-blog {
+  width: 56px;
+  height: 56px;
+  top: -25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.navbar-item-label {
+  margin-top: 6px;
+}
+.tab-link-active .navbar-item-label {
+  color: #0047cc;
+}
+.categories {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* For Firefox */
+  -ms-overflow-style: none;
+  /* For Internet Explorer and Edge */
+  scroll-behavior: smooth;
+}
+.category {
+  display: inline-block;
+  background-image: url("/src/static/images/onboarding-2.png");
+  background-color: #f4f7ff;
+  height: 60vw;
+  width: 60vw;
+  max-height: 256px;
+  max-width: 256px;
+  border-radius: 28px;
+  position: relative;
+  background-size: cover;
+  -webkit-transition: background-image 0.2s;
+
+  transition: all 0.2s linear;
+}
+.categories {
+  padding-bottom: 16px;
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    width: fit-content;
+    height: auto;
+    width: auto;
+    height: auto;
+  }
+  .category::after {
+    content: "";
+    background: linear-gradient(180deg, rgba(13, 37, 60, 0) 51.56%, #0d253c 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 28px;
+    z-index: 1;
+  }
+  .category-name {
+    width: calc(100% - 48px);
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    left: 24px;
+    bottom: 32px;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    color: #ffffff;
+    z-index: 2;
+  }
+  .swiper-slide:not(:first-child) {
+    margin-left: 20px;
+  }
+  .swiper-slide:first-child {
+    margin-left: 40px;
+  }
+  .swiper-slide:last-child {
+    margin-right: 40px;
+  }
+
+  .category {
+    .category-shadow {
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      top: 0;
+      left: 10%;
+      z-index: -1;
+      background: #0d253c;
+    }
+  }
+}
+.categories::-webkit-scrollbar {
+  width: 0;
+}
+.list-post ul {
+  background: none;
+}
+.post {
+  position: relative;
+  .post-content {
+    height: 146px;
+  }
+  .zmp-card {
+    border: none !important;
+    border-radius: 16px;
+    .zmp-card-body {
+      margin: 0;
+    }
+  }
+  .post-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    @supports (-webkit-line-clamp: 1) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .like,
+  .time {
+    font-size: 12px;
+    margin-left: 6px;
+    margin-bottom: 0;
+    line-height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .desc {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    @supports (-webkit-line-clamp: 2) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .post-thumbnail {
+    width: 92px;
+    border-radius: 16px;
+    img {
+      object-fit: cover;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      background-color: #f4f7ff;
+    }
+  }
+}
+
+// .ios {
+//   .page-next {
+//     transform: none;
+//     left: 100%;
+//   }
+//   .page-previous {
+//     transform: none;
+//     left: -20%;
+//   }
+//   .router-transition-forward {
+//     .page-next {
+//       animation: ios-page-next-to-current var(--zmp-page-transition-duration)
+//         forwards;
+//     }
+//     .page-current {
+//       // From current to previous
+//       animation: ios-page-current-to-previous var(--zmp-page-transition-duration)
+//         forwards;
+//     }
+//   }
+//   @keyframes ios-page-next-to-current {
+//     from {
+//       transform: none;
+//       left: 100%;
+//     }
+//     to {
+//       transform: none;
+//       left: 0;
+//     }
+//   }
+//   @keyframes ios-page-previous-to-current {
+//     from {
+//       transform: none;
+//       left: -20%;
+//     }
+//     to {
+//       transform: none;
+//       left: 0;
+//     }
+//   }
+//   @keyframes ios-page-current-to-previous {
+//     from {
+//       transform: none;
+//       left: 0;
+//     }
+//     to {
+//       transform: none;
+//       left: -20%;
+//     }
+//   }
+//   @keyframes ios-page-current-to-next {
+//     from {
+//       transform: none;
+//       left: 0;
+//     }
+//     to {
+//       transform: none;
+//       left: 100%;
+//     }
+//   }
+// }
+
+.page {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}

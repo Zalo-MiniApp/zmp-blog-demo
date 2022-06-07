@@ -2,7 +2,7 @@
   "name": "blog-club",
   "private": true,
   "version": "1.0.0",
-  "description": "Blog Club",
+  "description": "ZMP Blog",
   "repository": "",
   "license": "UNLICENSED",
   "browserslist": [
@@ -15,12 +15,12 @@
     "Samsung >= 5"
   ],
   "scripts": {
-    "start": "npm run build:css && zmp start",
-    "deploy": "npm run build:css && zmp deploy",
-    "build": "npm run build:css && zmp build",
+    "start": "npm run watch:css && zmp start",
+    "deploy": "zmp deploy",
+    "build": "zmp build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/output.css"
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/output.css"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -30,13 +30,13 @@
     "react-dom": "^17.0.2",
     "swiper": "^7.0.5",
     "vite-plugin-babel-macros": "^1.0.5",
-    "zmp-cli": "^3.5.2",
-    "zmp-framework": "^1.5.0",
-    "zmp-sdk": "^2.11.6"
+    "zmp-framework": "^1.7.0-0",
+    "zmp-sdk": "^2.19.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@vitejs/plugin-react": "^1.3.2",
     "@vitejs/plugin-react-refresh": "^1.3.6",
     "autoprefixer": "^10.3.4",
     "babel-plugin-macros": "^3.1.0",

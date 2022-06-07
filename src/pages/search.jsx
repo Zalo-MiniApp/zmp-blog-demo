@@ -1,15 +1,16 @@
 import React from "react"
 import { Page, Card, Text, Box } from "zmp-framework/react"
 import NavigationBar from "@components/NavigationBar"
-import useScrollPosition from "@hooks/useScrollPosition"
-import ComingSoon from "@components/ComingSoon"
-
 const SearchPage = ({ zmproute }) => {
-  useScrollPosition('/search')
   return (
-    <Page>
-      <NavigationBar active={zmproute.path} />
-      <ComingSoon pageName="Search" />
+    <Page className="search-page">
+      {/* <NavigationBar active={zmproute.path} /> */}
+
+      <Card inset title="Search">
+        <Box textAlign="center">
+          <Text>Comming soon</Text>
+        </Box>
+      </Card>
     </Page>
   )
 }

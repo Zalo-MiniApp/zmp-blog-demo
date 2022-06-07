@@ -1,6 +1,7 @@
 import { defineConfig } from "vite"
 import path from "path"
-import reactRefresh from "@vitejs/plugin-react-refresh"
+import react from "@vitejs/plugin-react"
+
 // https://vitejs.dev/config/
 export default () => {
   return defineConfig({
@@ -9,7 +10,7 @@ export default () => {
     server: {
       // host: true,
     },
-    plugins: [reactRefresh()],
+    plugins: [react()],
     resolve: {
       alias: {
         "@components": path.resolve(__dirname, "src/components"),

@@ -1,16 +1,24 @@
 import React from "react"
-import { Page, Card, Text, Box } from "zmp-framework/react"
-import NavigationBar from "@components/NavigationBar"
-import ComingSoon from "@components/ComingSoon"
-import useScrollPosition from "@hooks/useScrollPosition"
-
+import { Page, Card, Box, Button, zmp } from "zmp-framework/react"
 const MenuPage = ({ zmproute }) => {
-  useScrollPosition('/menu')
-
   return (
-    <Page>
-      <NavigationBar active={zmproute.path} />
-      <ComingSoon pageName="Menu" />
+    <Page className="menu-page">
+      <Card inset title="Menu">
+        <Box textAlign="center">
+          <Box>
+            <Button
+              responsive
+              typeName="primary"
+              onClick={() => {
+                zmp.tab.show("#view-main")
+                zmp.views.main.router.navigate("/blogs/")
+              }}
+            >
+              Open Blogs
+            </Button>
+          </Box>
+        </Box>
+      </Card>
     </Page>
   )
 }

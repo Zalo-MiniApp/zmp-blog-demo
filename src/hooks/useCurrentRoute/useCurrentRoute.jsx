@@ -5,7 +5,7 @@ export default () => {
   const [currentRoute, setCurrentRoute] = useState("/")
 
   useEffect(() => {
-    const activeRoute = zmp.views.current.router.currentRoute.path
+    const activeRoute = "/"
     setCurrentRoute(activeRoute)
   })
 

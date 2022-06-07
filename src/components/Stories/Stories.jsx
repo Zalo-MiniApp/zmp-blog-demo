@@ -2,7 +2,6 @@ import React from "react"
 
 import { Box, useStore } from "zmp-framework/react"
 import Story from "./Story"
-import './styles.scss'
 
 const Stories = () => {
   const loading = useStore("loadingStories")

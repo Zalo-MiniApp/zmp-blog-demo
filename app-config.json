@@ -1,13 +1,13 @@
 {
   "app": {
     "title": "ZMP Blog",
-    "headerColor": "#376aed",
-    "textColor": "white",
+    "headerColor": "white",
+    "textColor": "black",
     "leftButton": "back"
   },
   "debug": false,
   "listCSS": [],
   "listSyncJS": [],
   "listAsyncJS": [],
-  "pages": ["/blogs", "/article","/menu","/search"]
+  "pages": ["/blogs", "/article","/menu","/search","/detail"]
 }

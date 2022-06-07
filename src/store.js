@@ -1,12 +1,20 @@
 import { createStore } from "zmp-core/lite"
-import { getBlogs, getCategories, getStories, login } from "./services/blogs"
-import { getUserInfo } from "./services/zalo"
+import { zmp } from "zmp-framework/react"
+import {
+  getBlog,
+  getBlogs,
+  getCategories,
+  getStories,
+  login,
+} from "./services/blogs"
+
 const store = createStore({
   state: {
+    jwt: null,
     user: null,
     loadingCategories: false,
     categories: [],
-    showBlogsLoadingSkeleton: false,
+    loadingBlogs: false,
     scrollPosition: [],
     latestBlogs: {
       limit: 10,
@@ -34,8 +42,8 @@ const store = createStore({
     latestBlogs({ state }) {
       return state.latestBlogs
     },
-    showBlogsLoadingSkeleton({ state }) {
-      return state.showBlogsLoadingSkeleton
+    loadingBlogs({ state }) {
+      return state.loadingBlogs
     },
     stories({ state }) {
       return state.stories
@@ -43,7 +51,9 @@ const store = createStore({
     loadingStories({ state }) {
       return state.loadingStories
     },
-
+    jwt({ state }) {
+      return state.jwt
+    },
     onboarding({ state }) {
       return state.onboarding
     },
@@ -58,10 +68,12 @@ const store = createStore({
     setUser({ state }, user) {
       state.user = user
     },
-
+    setJwt({ state }, jwt) {
+      state.jwt = jwt
+    },
     async getLatestBlogs({ state }, { skip, limit, showSkeleton, reset = false }) {
       if (showSkeleton) {
-        state.showBlogsLoadingSkeleton = true
+        state.loadingBlogs = true
       }
       const { blogs } = await getBlogs({ skip, limit })
       state.latestBlogs = {
@@ -71,31 +83,26 @@ const store = createStore({
         hasMore: blogs.length && blogs.length === limit,
       }
       if (showSkeleton) {
-        setTimeout(() => {
-          state.showBlogsLoadingSkeleton = false
-        }, 500)
+        state.loadingBlogs = false
       }
     },
     async getCategories({ state }) {
       state.loadingCategories = true
       const categories = await getCategories()
       state.categories = categories
-      setTimeout(() => {
-        state.loadingCategories = false
-      }, 500)
+      state.loadingCategories = false
     },
     async getStories({ state }) {
       state.loadingStories = true
       const stories = await getStories()
       state.stories = stories
-      setTimeout(() => {
-        state.loadingStories = false
-      }, 500)
+
+      state.loadingStories = false
     },
     async login({ dispatch }) {
-      const { userInfo } = await getUserInfo()
-      if (userInfo) {
-        dispatch("setUser", userInfo)
+      const user = await login()
+      if (user) {
+        dispatch("setUser", user)
       }
     },
   },
