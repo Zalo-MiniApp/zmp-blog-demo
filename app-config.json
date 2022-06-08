@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "ZMP Blog",
-    "headerColor": "white",
+    "headerColor": "",
     "textColor": "black",
     "leftButton": "back"
   },

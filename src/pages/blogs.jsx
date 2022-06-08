@@ -120,7 +120,7 @@ const ListPost = ({ zmproute }) => {
       infinitePreloader={!loading && hasMore}
       onInfinite={loadMore}
     >
-      <Header>Latest News</Header>
+      <Header back>Latest News</Header>
       <Box className="list-post" px="10" pb="10" pt={0} m="0">
         {pageContent}
       </Box>

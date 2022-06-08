@@ -10,7 +10,7 @@ const Detail = ({ zmproute }) => {
       }}
       className="detail-page"
     >
-      <Header>Lorem ipsum dolor sit amet</Header>
+      <Header back>Lorem ipsum dolor sit amet</Header>
       <Card inset title="Blogs">
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

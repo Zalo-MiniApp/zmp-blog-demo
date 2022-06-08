@@ -29,7 +29,6 @@ const MyApp = () => {
         <NavigationBar activeTab={activeTab} />
         <View
           stackPages
-          browserHistoryOnLoad
           id="view-main"
           onTabShow={() => {
             setActiveTab("main")
@@ -43,7 +42,6 @@ const MyApp = () => {
         ></View>
         <View
           id="view-article"
-          browserHistoryOnLoad
           initRouterOnTabShow
           name="article"
           tab
